@@ -1,0 +1,6 @@
+@MediaMarktProjectApi.Api_HostAddress = http://localhost:5186
+
+GET {{MediaMarktProjectApi.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

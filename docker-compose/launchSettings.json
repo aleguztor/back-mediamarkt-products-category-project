@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "docker-compose": {
+      "commandName": "DockerCompose",
+      "serviceActions": {
+        "mediamarkt_api": "StartDebugging",
+        "mediamarkt_db": "None"
+      }
+    }
+  }
+}

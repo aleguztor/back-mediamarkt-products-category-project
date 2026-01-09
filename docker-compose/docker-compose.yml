@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mediamarkt_db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mediamarkt_db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=lb#rI1lL/kO6Raqe1=w@ # Cambiar por una contraseña segura
+      - MSSQL_PID=Express
+    ports:
+      - '1433:1433'
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          '/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$${SA_PASSWORD}" -Q "SELECT 1" || exit 1',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  mediamarkt_api:
+    build:
+      context: ..
+      dockerfile: MediaMarktProjectApi.Api/Dockerfile
+    container_name: mediamarkt_api
+    depends_on:
+      - mediamarkt_db
+    ports:
+      - '5186:80'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=mediamarkt_db,1433;Database=mediamarkt_db;User Id=sa;Password=lb#rI1lL/kO6Raqe1=w@;TrustServerCertificate=True;
+    restart: on-failure
+   
+
+volumes:
+  mssql-data:
+

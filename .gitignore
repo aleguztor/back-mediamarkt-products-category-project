@@ -1,0 +1,51 @@
+## .NET Core  Visual Studio
+[Bb]in
+[Oo]bj
+[Ll]og
+.user
+.userosscache
+.sln.doccache
+
+## Visual Studio Code
+.vscode
+!.vscodesettings.json
+!.vscodetasks.json
+!.vscodelaunch.json
+!.vscodeextensions.json
+.code-workspace
+.history
+
+## Archivos de Usuario y Secretos (IMPORTANTE)
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+.env.
+!.env.example
+
+## Rider  JetBrains
+.idea
+.sln.iml
+
+## Docker
+.dockerignore
+# Ignorar datos persistentes de la base de datos si decides mapear un volumen local
+docker_data
+sql_data
+
+## Entity Framework y Herramientas
+.db
+.db-shm
+.db-wal
+.vs
+.root
+
+## Node.js (Si añadieras un front-end más adelante)
+node_modules
+npm-debug.log
+
+## Otros
+.DS_Store
+Thumbs.db
+dist
+publish

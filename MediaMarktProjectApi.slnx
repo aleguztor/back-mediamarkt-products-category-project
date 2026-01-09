@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="docker-compose/docker-compose.dcproj" Id="638069ba-284f-429d-8058-fbb1b896d070">
+    <Build />
+  </Project>
+  <Project Path="MediaMarktProjectApi.Api/MediaMarktProjectApi.Api.csproj" />
+  <Project Path="MediaMarktProjectApi.Application/MediaMarktProjectApi.Application.csproj" />
+  <Project Path="MediaMarktProjectApi.Domain/MediaMarktProjectApi.Domain.csproj" />
+  <Project Path="MediaMarktProjectApi.Infrastructure/MediaMarktProjectApi.Infrastructure.csproj" />
+</Solution>
