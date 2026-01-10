@@ -17,4 +17,3 @@ public class CategoryController(ICategoryService categoryService) : ApiControlle
         return HandleResult(result);
     }
 }
-
