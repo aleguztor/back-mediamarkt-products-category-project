@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaMarktProjectApi.Api</name>
+    </assembly>
+    <members>
+        <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.GetProducts">
+            <summary>
+            Obtiene un listado de productos.
+            </summary>
+            <returns>Retorna todos los productos.</returns>
+        </member>
+        <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.GetProductById(System.Guid)">
+            <summary>
+            Obtiene un producto por su ID.
+            </summary>
+            <param name="id">ID del producto</param>
+            <returns>Retorna el producto si lo encuentra.</returns>
+        </member>
+        <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.CreateProduct(MediaMarktProjectApi.Application.Dtos.Product.CreateProductRequest)">
+            <summary>
+            Crea un nuevo producto en el sistema.
+            </summary>
+            <remarks>
+            **Reglas de negocio:**
+            1. El nombre del producto no puede estar duplicado.
+            2. Si no se proporciona un CategoryId, se asignará a la categoría por defecto.
+            3. El precio debe ser estrictamente mayor que 0.
+            </remarks>
+            <param name="request">Objeto JSON con los datos del nuevo producto.</param>
+            <returns>Retorna el producto recién creado.</returns>
+        </member>
+        <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.UpdateProduct(MediaMarktProjectApi.Application.Dtos.Product.UpdateProductRequest)">
+            <summary>
+            Actualiza un producto en el sistema.
+            </summary>
+            <remarks>
+            **Reglas de negocio:**
+            2. Si no se proporciona un CategoryId, este quedará sin categoría.
+            3. El precio debe ser estrictamente mayor que 0.
+            </remarks>
+            <param name="request">Objeto JSON con los datos del producto a actualizar.</param>
+            <returns>Retorna true si se ha actualizdo correctamente.</returns>
+        </member>
+        <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.DeleteProductById(System.Guid)">
+            <summary>
+            Eliminar un producto por su ID.
+            </summary>
+            <param name="id">ID del producto</param>
+            <returns>Retorna true si se ha eliminado correctamente.</returns>
+        </member>
+    </members>
+</doc>

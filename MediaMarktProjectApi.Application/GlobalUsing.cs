@@ -1,0 +1,9 @@
+﻿global using MediaMarktProjectApi.Application.Dtos.Product;
+global using MediaMarktProjectApi.Domain.Common;
+global using MediaMarktProjectApi.Application.Interfaces;
+global using System.ComponentModel.DataAnnotations;
+global using MediaMarktProjectApi.Infrastructure.Interfaces;
+global using MediaMarktProjectApi.Domain.Common.Enums;
+global using MediaMarktProjectApi.Domain.Entities;
+global using MediaMarktProjectApi.Application.Services;
+global using Microsoft.Extensions.DependencyInjection;

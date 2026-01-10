@@ -1,8 +1,4 @@
-﻿
-
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MediaMarktProjectApi.Domain.Entities;
+﻿namespace MediaMarktProjectApi.Domain.Entities;
 public class Product
 {
     public Guid Id { get; set; }
@@ -10,6 +6,6 @@ public class Product
     public string Description { get; set; } = string.Empty; // Código de inventario
     [Column(TypeName = "decimal(18,2)")]
     public decimal Price { get; set; }
-    public Guid CategoryId { get; set; }
-    public Category Category { get; set; } = null!;
+    public Guid? CategoryId { get; set; }
+    public Category? Category { get; set; } = null!;
 }
