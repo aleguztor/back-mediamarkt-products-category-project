@@ -13,4 +13,3 @@ public record CreateProductRequest
 
     public Guid? CategoryId { get; set; }
 }
-

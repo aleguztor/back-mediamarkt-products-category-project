@@ -4,6 +4,12 @@
         <name>MediaMarktProjectApi.Api</name>
     </assembly>
     <members>
+        <member name="M:MediaMarktProjectApi.Api.Controllers.CategoryController.GetProducts">
+            <summary>
+            Obtiene un listado de categorias.
+            </summary>
+            <returns>Retorna todas las categorias.</returns>
+        </member>
         <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.GetProducts">
             <summary>
             Obtiene un listado de productos.
@@ -23,8 +29,7 @@
             </summary>
             <remarks>
             **Reglas de negocio:**
-            1. El nombre del producto no puede estar duplicado.
-            2. Si no se proporciona un CategoryId, se asignará a la categoría por defecto.
+            2. Si no se proporciona un CategoryId, este quedará sin categoría.
             3. El precio debe ser estrictamente mayor que 0.
             </remarks>
             <param name="request">Objeto JSON con los datos del nuevo producto.</param>

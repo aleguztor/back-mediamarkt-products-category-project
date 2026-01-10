@@ -1,7 +1,7 @@
 ﻿global using MediaMarktProjectApi.Domain.Entities;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
-global using MediaMarktProjectApi.Infrastructure.Interfaces;
+global using MediaMarktProjectApi.Domain.Interfaces;
 global using MediaMarktProjectApi.Infrastructure.Persistance;
 global using MediaMarktProjectApi.Infrastructure.Repositories;
 global using Microsoft.Extensions.Configuration;
