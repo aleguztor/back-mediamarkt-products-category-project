@@ -24,7 +24,18 @@ builder.Services.AddSwaggerGen(options =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
 });
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5186", "http://localhost:5173") // URL de tu React
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 
 var enableSwagger = app.Configuration.GetValue<bool>("EnableSwagger", app.Environment.IsDevelopment());
@@ -40,6 +51,7 @@ if (enableSwagger)
 if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
+    app.UseCors(myAllowSpecificOrigins);
 }
 
 app.UseAuthorization();
