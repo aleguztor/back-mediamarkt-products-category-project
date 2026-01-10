@@ -1,13 +1,15 @@
+using MediaMarktProjectApi.Application;
+using MediaMarktProjectApi.Infrastructure;
 using MediaMarktProjectApi.Infrastructure.Persistance;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
-using MediaMarktProjectApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 builder.Services.AddControllers(options =>
 {

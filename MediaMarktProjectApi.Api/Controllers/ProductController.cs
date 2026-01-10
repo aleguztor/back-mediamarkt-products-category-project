@@ -29,7 +29,7 @@ public class ProductController(IProductService productService) : ControllerBase
     /* Summary:
     * This endpoint retrieves a product by its ID.
     */
-    public async Task<IActionResult> GetProductById(string id)
+    public async Task<IActionResult> GetProductById(Guid id)
     {
         var result = await productService.GetByIdAsync(id);
 
@@ -75,7 +75,7 @@ public class ProductController(IProductService productService) : ControllerBase
     /* Summary:
     * This endpoint delete a product.
     */
-    public async Task<IActionResult> DeleteProductById(string id)
+    public async Task<IActionResult> DeleteProductById(Guid id)
     {
         var result = await productService.DeleteProductByIdAsync(id);
 

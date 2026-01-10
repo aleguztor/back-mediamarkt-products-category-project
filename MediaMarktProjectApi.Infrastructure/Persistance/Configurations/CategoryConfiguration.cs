@@ -5,6 +5,8 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         builder.ToTable("Categories");
         builder.HasKey(c => c.Id);
+
+        builder.Property(p => p.Id).HasDefaultValueSql("NEWSEQUENTIALID()").ValueGeneratedOnAdd();
         builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
     }
 }

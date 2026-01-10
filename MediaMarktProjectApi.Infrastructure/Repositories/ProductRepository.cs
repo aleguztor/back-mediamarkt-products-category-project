@@ -1,6 +1,4 @@
-﻿using MediaMarktProjectApi.Infrastructure.Persistance;
-
-namespace MediaMarktProjectApi.Infrastructure.Repositories;
+﻿namespace MediaMarktProjectApi.Infrastructure.Repositories;
 public class ProductRepository(ApplicationDbContext context) : IProductRepository
 {
     
@@ -10,17 +8,18 @@ public class ProductRepository(ApplicationDbContext context) : IProductRepositor
     public async Task<IEnumerable<Product>> GetAllAsync()
         => await context.Products.Include(p => p.Category).ToListAsync();
 
-    public async Task CreateProductAsync(Product product)
+    public async Task<Product> CreateProductAsync(Product product)
     {
         await context.Products.AddAsync(product);
-
         await context.SaveChangesAsync();
+        return product;
     }
         
     public async Task UpdateProductAsync(Product product)
     {
         context.Products.Update(product);
         await context.SaveChangesAsync();
+
     }
 
     public async Task DeleteProductByIdAsync(Guid id)

@@ -1,6 +1,6 @@
 ﻿namespace MediaMarktProjectApi.Application.Dtos.Product;
 
-public class UpdateProductRequest
+public record UpdateProductRequest
 {
     public Guid Id { get; set; }
     [MaxLength(100)]
@@ -11,6 +11,6 @@ public class UpdateProductRequest
 
     public string Description { get; set; } = string.Empty;
 
-    public Guid CategoryId { get; set; }
+    public Guid? CategoryId { get; set; }
 }
 

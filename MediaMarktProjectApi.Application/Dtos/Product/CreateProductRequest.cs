@@ -1,6 +1,6 @@
 ﻿namespace MediaMarktProjectApi.Application.Dtos.Product;
 
-public class CreateProductRequest
+public record CreateProductRequest
 {
     [Required]
     [MaxLength(100)]
@@ -11,7 +11,6 @@ public class CreateProductRequest
 
     public string Description { get; set; } = string.Empty;
 
-    [Required]
-    public Guid CategoryId { get; set; }
+    public Guid? CategoryId { get; set; }
 }
 
