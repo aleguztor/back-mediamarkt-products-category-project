@@ -1,4 +1,4 @@
-﻿namespace MediaMarktProjectApi.Infrastructure.Interfaces;
+﻿namespace MediaMarktProjectApi.Domain.Interfaces;
 public interface IProductRepository
 {
     Task<IEnumerable<Product>> GetAllAsync();
