@@ -1,4 +1,6 @@
-﻿namespace MediaMarktProjectApi.Application.Services;
+﻿using MediaMarktProjectApi.Domain.Entities;
+
+namespace MediaMarktProjectApi.Application.Services;
 public class ProductService(IProductRepository repository) : IProductService
 {
     public async Task<Result<ProductDto>> CreateProductAsync(CreateProductRequest request)
@@ -28,7 +30,11 @@ public class ProductService(IProductRepository repository) : IProductService
             Name = createdProduct.Name,
             Description = createdProduct.Description,
             Price = createdProduct.Price,
-            CategoryId = createdProduct.CategoryId
+            Category = createdProduct.Category != null ? new CategoryDto
+            {
+                Id = createdProduct.Category.Id,
+                Name = createdProduct.Category.Name,
+            } : null,
         };
 
         return Result<ProductDto>.Success(productDto);
@@ -69,7 +75,11 @@ public class ProductService(IProductRepository repository) : IProductService
             Name = product.Name,
             Description = product.Description,
             Price = product.Price,
-            CategoryId = product.CategoryId
+            Category = product.Category != null ? new CategoryDto
+            {
+                Id = product.Category.Id,
+                Name = product.Category.Name,
+            } : null,
         });
 
         return Result<IEnumerable<ProductDto>>.Success(productDtos);
@@ -100,7 +110,11 @@ public class ProductService(IProductRepository repository) : IProductService
             Name = product.Name,
             Description = product.Description,
             Price = product.Price,
-            CategoryId = product.CategoryId
+            Category = product.Category != null ? new CategoryDto
+            {
+                Id = product.Category.Id,
+                Name = product.Category.Name,
+            } : null,
         };
 
         return Result<ProductDto>.Success(productDto);
