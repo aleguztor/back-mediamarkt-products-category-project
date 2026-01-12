@@ -6,4 +6,5 @@
   <Project Path="MediaMarktProjectApi.Application/MediaMarktProjectApi.Application.csproj" />
   <Project Path="MediaMarktProjectApi.Domain/MediaMarktProjectApi.Domain.csproj" />
   <Project Path="MediaMarktProjectApi.Infrastructure/MediaMarktProjectApi.Infrastructure.csproj" />
+  <Project Path="MediaMarktProjectApi.Tests/MediaMarktProjectApi.Tests.csproj" />
 </Solution>

@@ -71,7 +71,7 @@ using (var scope = app.Services.CreateScope())
         {
             try
             {
-                if (context.Database.GetPendingMigrations().Any())
+                if (context.Database.GetPendingMigrations().Any() && !app.Environment.IsEnvironment("Testing"))
                 {
                     context.Database.Migrate();
                 }
@@ -107,3 +107,5 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
         return value == null ? null : $"api/{value.ToString()?.ToLowerInvariant()}";
     }
 }
+
+public partial class Program { }

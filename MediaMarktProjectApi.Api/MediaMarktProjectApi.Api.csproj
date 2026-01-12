@@ -9,6 +9,7 @@
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<DocumentationFile>MediaMarktProjectApi.Api.xml</DocumentationFile>
 	<NoWarn>$(NoWarn);1591</NoWarn>
+	<PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
 
   <ItemGroup>
