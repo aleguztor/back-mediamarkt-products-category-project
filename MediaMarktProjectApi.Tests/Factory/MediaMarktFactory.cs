@@ -2,6 +2,7 @@
 public class MediaMarktApiFactory : WebApplicationFactory<Program>
 {
     private SqliteConnection _connection = null!;
+    
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
