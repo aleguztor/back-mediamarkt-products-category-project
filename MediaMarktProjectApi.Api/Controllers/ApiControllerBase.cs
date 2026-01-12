@@ -5,10 +5,17 @@ public abstract class ApiControllerBase : ControllerBase
     {
         if (result.IsSuccess)
         {
-            return result.Value is null ? NoContent() : Ok(result.Value);
+            if (result.Value is null)
+                return NoContent();
+
+            return result.SuccessType switch
+            {
+                SuccessType.Ok => Ok(result.Value),
+                SuccessType.Created => Created(string.Empty, result.Value),
+                _ => Ok(result.Value)
+            };
         }
 
-        // Aquí unificamos la lógica de errores para toda la App
         return result.ErrorType switch
         {
             ErrorType.NotFound => NotFound(new { message = result.Error }),

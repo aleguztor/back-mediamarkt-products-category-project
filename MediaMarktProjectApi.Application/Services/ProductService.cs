@@ -1,6 +1,4 @@
-﻿using MediaMarktProjectApi.Domain.Entities;
-
-namespace MediaMarktProjectApi.Application.Services;
+﻿namespace MediaMarktProjectApi.Application.Services;
 public class ProductService(IProductRepository repository) : IProductService
 {
     public async Task<Result<ProductDto>> CreateProductAsync(CreateProductRequest request)
@@ -37,7 +35,7 @@ public class ProductService(IProductRepository repository) : IProductService
             } : null,
         };
 
-        return Result<ProductDto>.Success(productDto);
+        return Result<ProductDto>.Success(productDto, SuccessType.Created);
     }
 
     public async Task<Result<bool>> DeleteProductByIdAsync(Guid id)

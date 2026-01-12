@@ -2,20 +2,21 @@
 public class Result<T>
 {
     public bool IsSuccess { get; }
+    public SuccessType SuccessType { get; }
     public T Value { get; }
     public string Error { get; }
-    public bool IsFailure => !IsSuccess;
     public ErrorType ErrorType { get; }
 
-    protected Result(T value, bool isSuccess, string error, ErrorType type = ErrorType.Validation)
+    protected Result(T value, bool isSuccess, string error, ErrorType errorType = ErrorType.Validation, SuccessType successType = SuccessType.Ok)
     {
         Value = value;
         IsSuccess = isSuccess;
         Error = error;
-        ErrorType = ErrorType;
+        ErrorType = errorType;
+        SuccessType = successType;
     }
 
-    public static Result<T> Success(T value) => new(value, true, string.Empty);
-    public static Result<T> Failure(string error, ErrorType type) => new(default!, false, error, type);
+    public static Result<T> Success(T value, SuccessType successType = SuccessType.Ok) => new(value, true, string.Empty, successType: successType);
+    public static Result<T> Failure(string error, ErrorType errortype = ErrorType.Validation) => new(default!, false, error, errorType: errortype);
 }
 

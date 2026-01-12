@@ -1,5 +1,14 @@
 {
   "profiles": {
+    "RunTests": {
+      "commandName": "Executable",
+      "executablePath": "dotnet",
+      "commandLineArgs": "test MediaMarktProjectApi.Tests/MediaMarktProjectApi.Tests.csproj",
+      "workingDirectory": "$(SolutionDir)",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Testing"
+      }
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
@@ -9,6 +18,7 @@
         "EnableSwagger": "true"
       }
     },
+
     "Container (Dockerfile)": {
       "commandName": "Docker",
       "launchBrowser": true,
