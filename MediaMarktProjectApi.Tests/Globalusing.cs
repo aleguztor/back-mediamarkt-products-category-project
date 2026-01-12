@@ -16,3 +16,5 @@ global using Microsoft.Data.Sqlite;
 global using Bogus;
 global using MediaMarktProjectApi.Domain.Entities;
 global using System;
+global using MediaMarktProjectApi.Application.Dtos.Category;
+global using MediaMarktProjectApi.Tests.Seed;
