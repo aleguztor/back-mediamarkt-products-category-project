@@ -1,5 +1,14 @@
 {
   "profiles": {
+    "RunTests": {
+      "commandName": "Executable",
+      "executablePath": "dotnet",
+      "commandLineArgs": "test MediaMarktProjectApi.Tests/MediaMarktProjectApi.Tests.csproj",
+      "workingDirectory": "$(SolutionDir)",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Testing"
+      }
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
@@ -8,6 +17,26 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "EnableSwagger": "true"
       }
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_HTTPS_PORTS": "8081",
+        "ASPNETCORE_HTTP_PORTS": "8080"
+      },
+      "publishAllPorts": true,
+      "useSSL": true
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EnableSwagger": "true"
+      },
+      "distributionName": ""
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
