@@ -18,7 +18,6 @@
         "EnableSwagger": "true"
       }
     },
-
     "Container (Dockerfile)": {
       "commandName": "Docker",
       "launchBrowser": true,
@@ -29,6 +28,15 @@
       },
       "publishAllPorts": true,
       "useSSL": true
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EnableSwagger": "true"
+      },
+      "distributionName": ""
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",

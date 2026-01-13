@@ -37,8 +37,9 @@ public class ProductController(IProductService productService) : ApiControllerBa
     /// </summary>
     /// <remarks>
     /// **Reglas de negocio:**
-    /// 2. Si no se proporciona un CategoryId, este quedará sin categoría.
-    /// 3. El precio debe ser estrictamente mayor que 0.
+    /// 1. Si no se proporciona un CategoryId, este quedará sin categoría.
+    /// 2. El precio debe ser estrictamente mayor que 0.
+    /// 3. La descripción puede ser nula.
     /// </remarks>
     /// <param name="request">Objeto JSON con los datos del nuevo producto.</param>
     /// <returns>Retorna el producto recién creado.</returns>
@@ -57,8 +58,9 @@ public class ProductController(IProductService productService) : ApiControllerBa
     /// </summary>
     /// <remarks>
     /// **Reglas de negocio:**
-    /// 2. Si no se proporciona un CategoryId, este quedará sin categoría.
-    /// 3. El precio debe ser estrictamente mayor que 0.
+    /// 1. Si no se proporciona un CategoryId, este quedará sin categoría.
+    /// 2. El precio debe ser estrictamente mayor que 0.
+    /// 3. La descripción puede ser nula.
     /// </remarks>
     /// <param name="request">Objeto JSON con los datos del producto a actualizar.</param>
     /// <returns>Retorna true si se ha actualizdo correctamente.</returns>
@@ -86,4 +88,3 @@ public class ProductController(IProductService productService) : ApiControllerBa
         return HandleResult(result);
     }
 }
-
