@@ -7,12 +7,13 @@ public class ProductController(IProductService productService) : ApiControllerBa
     /// <summary>
     /// Obtiene un listado de productos.
     /// </summary>
+    /// <param name="productsFilterRequest">Filtros para los productos</param>
     /// <returns>Retorna todos los productos.</returns>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<ProductDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetProducts()
+    public async Task<IActionResult> GetProducts([FromQuery]ProductsFilterRequest productsFilterRequest)
     {
-        var result = await productService.GetAllAsync();
+        var result = await productService.GetAllAsync(productsFilterRequest);
 
         return HandleResult(result);
     }

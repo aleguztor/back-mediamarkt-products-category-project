@@ -1,7 +1,9 @@
-﻿namespace MediaMarktProjectApi.Domain.Interfaces;
+﻿using MediaMarktProjectApi.Domain.Common;
+
+namespace MediaMarktProjectApi.Domain.Interfaces;
 public interface IProductRepository
 {
-    Task<IEnumerable<Product>> GetAllAsync();
+    Task<PagedList<Product>> GetAllAsync(ProductsFilterRequest productsFilterRequest);
     Task<Product?> GetByIdAsync(Guid id);
     Task<Product> CreateProductAsync(Product product);
     Task UpdateProductAsync(Product product);
