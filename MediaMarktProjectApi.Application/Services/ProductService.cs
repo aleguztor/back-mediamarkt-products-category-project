@@ -55,19 +55,19 @@ public class ProductService(IProductRepository repository) : IProductService
         return Result<bool>.Success(true);
     }
 
-    public async Task<Result<IEnumerable<ProductDto>>> GetAllAsync()
+    public async Task<Result<PagedList<ProductDto>>> GetAllAsync(ProductsFilterRequest productsFilterRequest)
     {
-        IEnumerable<Product> products;
+        PagedList<Product> products;
         try
         {
-            products = await repository.GetAllAsync();
+            products = await repository.GetAllAsync(productsFilterRequest);
 
         } catch(Exception ex)
         {
-            return Result<IEnumerable<ProductDto>>.Failure(ex.Message + " \n" + ex.InnerException, ErrorType.Failure);
+            return Result<PagedList<ProductDto>>.Failure(ex.Message + " \n" + ex.InnerException, ErrorType.Failure);
         }
 
-        IEnumerable<ProductDto> productDtos = products.Select(product => new ProductDto
+        PagedList<ProductDto> pagedListDto = products.Map(product => new ProductDto
         {
             Id = product.Id,
             Name = product.Name,
@@ -77,10 +77,11 @@ public class ProductService(IProductRepository repository) : IProductService
             {
                 Id = product.Category.Id,
                 Name = product.Category.Name,
-            } : null,
+            } : null
         });
 
-        return Result<IEnumerable<ProductDto>>.Success(productDtos);
+
+        return Result<PagedList<ProductDto>>.Success(pagedListDto);
     }
 
     public async Task<Result<ProductDto>> GetByIdAsync(Guid id)

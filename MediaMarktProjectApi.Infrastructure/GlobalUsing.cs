@@ -6,3 +6,4 @@ global using MediaMarktProjectApi.Infrastructure.Persistance;
 global using MediaMarktProjectApi.Infrastructure.Repositories;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using MediaMarktProjectApi.Domain.Common;
