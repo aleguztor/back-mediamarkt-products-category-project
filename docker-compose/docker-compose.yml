@@ -30,10 +30,10 @@ services:
     depends_on:
       - mediamarkt_db
     ports:
-      - '5186:80'
+      - '5186:8080'
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Server=mediamarkt_db,1433;Database=mediamarkt_db;User Id=sa;Password=lb#rI1lL/kO6Raqe1=w@;TrustServerCertificate=True;
     restart: on-failure
    
