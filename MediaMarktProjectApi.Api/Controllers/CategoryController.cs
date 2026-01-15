@@ -9,7 +9,7 @@ public class CategoryController(ICategoryService categoryService) : ApiControlle
     /// </summary>
     /// <returns>Retorna todas las categorias.</returns>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<ProductDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<CategoryDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetProducts()
     {
         var result = await categoryService.GetAllAsync();
