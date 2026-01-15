@@ -6,7 +6,7 @@ services:
     container_name: mediamarkt_db
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=lb#rI1lL/kO6Raqe1=w@ # Cambiar por una contraseña segura
+      - SA_PASSWORD=lb#rI1lL/kO6Raqe1=w@
       - MSSQL_PID=Express
     ports:
       - '1433:1433'
