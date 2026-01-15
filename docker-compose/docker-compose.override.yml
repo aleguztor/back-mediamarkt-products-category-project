@@ -6,4 +6,4 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - EnableSwagger=true
     ports:
-      - "5186:80"
+      - "5186:8080"
