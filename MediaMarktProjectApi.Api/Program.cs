@@ -58,43 +58,45 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
+await using var scope = app.Services.CreateAsyncScope();
+var services = scope.ServiceProvider;
+var logger = services.GetRequiredService<ILogger<Program>>();
+try
 {
-    var services = scope.ServiceProvider;
-    var logger = services.GetRequiredService<ILogger<Program>>();
-    try
+        
+    const int maxRetries = 5;
+    var delay = TimeSpan.FromSeconds(5);
+    for (int attempt = 1; attempt <= maxRetries; attempt++)
     {
-        var context = services.GetRequiredService<ApplicationDbContext>();
-        const int maxRetries = 5;
-        var delay = TimeSpan.FromSeconds(5);
-        for (int attempt = 1; attempt <= maxRetries; attempt++)
+        try
         {
-            try
+            if (!app.Environment.IsEnvironment("Testing"))
             {
-                if (context.Database.GetPendingMigrations().Any() && !app.Environment.IsEnvironment("Testing"))
-                {
-                    context.Database.Migrate();
-                }
-                break;
+                using var context = services.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
             }
-            catch (Exception ex) when (attempt < maxRetries)
-            {
-                logger.LogWarning(ex, "Intento {Attempt}/{Max} de aplicar migraciones fall�. Reintentando en {Delay}s...", attempt, maxRetries, delay.TotalSeconds);
-                await Task.Delay(delay);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "No se pudieron aplicar migraciones despu�s de {Max} intentos.", maxRetries);
-                throw;
-            }
+
+            logger.LogInformation("Migraciones aplicadas correctamente.");
+
+            break;
+        }
+        catch (Exception ex) when (attempt < maxRetries)
+        {
+            logger.LogWarning(ex, "Intento {Attempt}/{Max} de aplicar migraciones falló. Reintentando en {Delay}s...", attempt, maxRetries, delay.TotalSeconds);
+            await Task.Delay(delay);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "No se pudieron aplicar migraciones después de {Max} intentos.", maxRetries);
+            throw;
         }
     }
-    catch (Exception ex)
-    {
-        logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "Ocurri� un error al crear la base de datos.");
-    }
 }
+catch (Exception ex)
+{
+    logger.LogError(ex, "Ocurrió un error al crear la base de datos.");
+}
+
 
 
 app.Run();
