@@ -81,7 +81,7 @@ public class ProductController(IProductService productService) : ApiControllerBa
     /// <returns>Retorna true si se ha eliminado correctamente.</returns>
     [HttpDelete]
     [Route("{id}")]
-    [ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteProductById(Guid id)
     {
         var result = await productService.DeleteProductByIdAsync(id);
