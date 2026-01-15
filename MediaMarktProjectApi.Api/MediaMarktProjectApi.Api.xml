@@ -14,6 +14,7 @@
             <summary>
             Obtiene un listado de productos.
             </summary>
+            <param name="productsFilterRequest">Filtros para los productos</param>
             <returns>Retorna todos los productos.</returns>
         </member>
         <member name="M:MediaMarktProjectApi.Api.Controllers.ProductController.GetProductById(System.Guid)">

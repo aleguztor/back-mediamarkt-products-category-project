@@ -41,6 +41,16 @@ public class ProductRepository(ApplicationDbContext context) : IProductRepositor
             query = query.Where(p => p.Category != null && filter.Category.Contains(p.Category.Name));
         }
 
+        if (!string.IsNullOrWhiteSpace(filter.SortBy))
+        {
+            query = filter.SortBy.ToLower() switch
+            {
+                "name" => filter.IsDescending ? query.OrderByDescending(p => p.Name) : query.OrderBy(p => p.Name),
+                "price" => filter.IsDescending ? query.OrderByDescending(p => p.Price) : query.OrderBy(p => p.Price),
+                "category.name" => filter.IsDescending ? query.OrderByDescending(p => p.Category != null ? p.Category.Name : string.Empty) : query.OrderBy(p => p.Category != null ? p.Category.Name : string.Empty),
+                _ => query.OrderBy(p => p.Name)
+            };
+        }
         return await query.ToPagedListAsync(filter.PageNumber, filter.PageSize);
     }
 
